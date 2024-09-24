@@ -1,0 +1,35 @@
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-end justify-content-md-end py-5">
+        <div class="dropdown text-end">
+            <span class="d-block text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img src="user.svg" alt="mdo" width="32" height="32" class="rounded-circle">
+            </span>
+            <ul class="dropdown-menu text-small">
+                <li class="text-center">{{signupData?.firstName}} {{signupData?.lastName}}</li>
+                <li><a class="dropdown-item" href="#">Log out</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title text-center">ToDo App</h5>
+            <app-todo-task (taskAdded)="onTaskAdd($event)"></app-todo-task>
+            <ul class="list-group list-group-flush">
+                @for (taskItem of tasks; track $index; let idx = $index) {
+                <li class="list-group-item" [class.completed]="taskItem.completed">
+                    <div class="d-flex justify-content-between">
+                        <!-- <button class="btn btn-outline-success" (click)="onTaskCompletion(idx)">
+                            <i class="bi bi-check"></i>
+                        </button> -->
+                        <span>{{taskItem.title}}</span>
+                        <button class="btn btn-danger" (click)="onTaskDelete(idx)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

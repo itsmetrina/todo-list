@@ -1,0 +1,52 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()"
+    class="d-flex flex-column m-3 justify-content-center align-items-center vh-100">
+    <div class="col-md-4 mb-3">
+        <label for="firstName" class="form-label">First name</label>
+        <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
+        @if (signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched) {
+        <div class="invalid-feedback">
+            Please enter a valid first name (alphabets only).
+        </div>
+        }
+    </div>
+    <div class="col-md-4 mb-3">
+        <label for="lastName" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+        @if (signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched) {
+        <div class="invalid-feedback">
+            Please enter a valid first name (alphabets only).
+        </div>
+        }
+    </div>
+    <div class="col-md-4 mb-3">
+        <label for="username" class="form-label">Username</label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend3">&#64;</span>
+            <input type="email" class="form-control" id="username" formControlName="username" required>
+            @if (signupForm.get('username')?.invalid && signupForm.get('username')?.touched) {
+            <div class="invalid-feedback">
+                Please enter a valid email address.
+            </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password" required>
+        @if (signupForm.get('password')?.invalid && signupForm.get('password')?.touched) {
+        <div class="invalid-feedback">
+            Please choose a password with the required features.
+        </div>
+        }
+    </div>
+    <div class="col-md-4 mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" required>
+        @if (signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched) {
+        <div class="invalid-feedback">
+            Passwords must match.
+        </div>
+        }
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Sign Up</button>
+</form>

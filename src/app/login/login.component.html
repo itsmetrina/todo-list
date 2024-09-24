@@ -1,0 +1,21 @@
+<form class="d-flex flex-column m-3 justify-content-center align-items-center vh-100">
+    <div class="mb-3">
+        <label for="inputEmail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="inputPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword">
+    </div>
+    <div class="mb-3">
+        <span class="text-center">
+            <p>New Here?</p>
+            <a class="link-opacity-100-hover" routerLink="/signup" routerLinkActive="active"
+                ariaCurrentWhenActive="page">
+                Create Account
+            </a>
+        </span>
+    </div>
+    <button type="submit" class="btn btn-primary" routerLink="/tasks" routerLinkActive="active"
+        ariaCurrentWhenActive="page">Log In</button>
+</form>
