@@ -36,7 +36,6 @@ export class TaskLayoutComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.signupservice.signupData$.pipe(takeUntil(this.unsubscribe)).subscribe((data: SignupFormData | null) => {
-
 			this.signupData = data;
 		});
 	}

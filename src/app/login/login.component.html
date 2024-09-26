@@ -1,21 +1,33 @@
-<form class="d-flex flex-column m-3 justify-content-center align-items-center vh-100">
-    <div class="mb-3">
-        <label for="inputEmail" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()"
+    class="d-flex flex-column m-3 justify-content-center align-items-center vh-100">
+    <div class="col-md-4 mb-3">
+        <label for="username" class="form-label">Username (your email is your username)</label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend3">&#64;</span>
+            <input type="email" class="form-control" id="username" formControlName="username" required>
+            @if (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) {
+            <div class="invalid-feedback">
+                Please enter a valid email address.
+            </div>
+            }
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="inputPassword" class="form-label">Password</label>
-        <input type="password" class="form-control" id="inputPassword">
+    <div class="col-md-4 mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password" required>
+        @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+        <div class="invalid-feedback">
+            Please choose a password with the required features.
+        </div>
+        }
     </div>
-    <div class="mb-3">
+    <div class="col-md-4 mb-3">
         <span class="text-center">
             <p>New Here?</p>
-            <a class="link-opacity-100-hover" routerLink="/signup" routerLinkActive="active"
-                ariaCurrentWhenActive="page">
+            <a class="link-opacity-100-hover" routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">
                 Create Account
             </a>
         </span>
     </div>
-    <button type="submit" class="btn btn-primary" routerLink="/tasks" routerLinkActive="active"
-        ariaCurrentWhenActive="page">Log In</button>
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Sign Up</button>
 </form>
